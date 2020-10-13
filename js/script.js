@@ -51,11 +51,13 @@ function printQuote () {
       htmlString = `${htmlString}   <span class="citation">${randomQuote.location}</span>`
     } else 
     htmlString = `${htmlString} </p>`
-    return document.getElementById('quote-box').innerHTML = htmlString; 
+   
+    return document.getElementById('quote-box').innerHTML = htmlString,
+    document.body.style.backgroundColor = randomColor();
     
   };
 
-/***
+/***  
  * Create a function that replaces the background color with an imnage
 ***/
 
@@ -68,7 +70,7 @@ function randomColor() {
 
   
   };
-document.body.style.backgroundColor = randomColor();
+
 
 
 
@@ -81,4 +83,4 @@ document.body.style.backgroundColor = randomColor();
  * DO NOT CHANGE THE CODE BELOW!!
 ***/
 
-document.getElementById('load-quote').addEventListener("click", printQuote,   false);
+document.getElementById('load-quote').addEventListener("click", printQuote,  false);
