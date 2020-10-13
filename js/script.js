@@ -8,7 +8,7 @@ project 1 - A Random Quote Generator
   // Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
 
 /*** 
- * `quotes` array 
+ * Create an array of objects displaying famous quotes. Add a citation and year to a couple of them. 
 ***/
 let quotes = [
 
@@ -17,7 +17,7 @@ let quotes = [
   {quote: "If you cannot do great things, do small things in a great way.", source: "Napolean Hill"},
   {quote: "Jobs’s greatest creation isn’t any Apple product. It is Apple itself.", source: "John Gruber", year: 2011},
   {quote: "All our dreams can come true if we have the courage to pursue them", source: "Walt Disney"},
-  {quote: "Its kind of fun to do the impossible!", source: "Mickey Mouse"},
+  {quote: "Its kind of fun to do the impossible!", source: "Mickey Mouse", location: "Disneyland"},
   {quote: "Do, or Do not. There is no try", source: "Yoda", year: 1982},
   {quote: "You miss 100% of the shots you don’t take.", source: "Wayne Gretzky"},
 
@@ -25,7 +25,8 @@ let quotes = [
 
 
 /***
- * `getRandomQuote` function
+ * Create a random Quote function that will allow to randomly grab the index of each object inside the array. 
+ * return the random index and display the quote associated with that index. 
 ***/
 function getRandomQuote () {
   let randomNumber = Math.floor(Math.random() * Object.keys(quotes).length);
@@ -36,7 +37,8 @@ function getRandomQuote () {
 
 
 /***
- * `printQuote` function
+ * Create a print quote function and assign a variable to the getRandomQuote func
+ * check to see if the words citation and year are in the object concanate them to the variable. 
 ***/
 function printQuote () {
   let randomQuote = getRandomQuote();
@@ -45,11 +47,32 @@ function printQuote () {
       htmlString = `${htmlString}   <span class="citation">${randomQuote.citation}</span>`
     } else if ('year' in randomQuote === true){
       htmlString = `${htmlString}   <span class="year">${randomQuote.year}</span>`
-    }
+    } else if ('location' in randomQuote === true) {
+      htmlString = `${htmlString}   <span class="citation">${randomQuote.location}</span>`
+    } else 
     htmlString = `${htmlString} </p>`
     return document.getElementById('quote-box').innerHTML = htmlString; 
     
   };
+
+/***
+ * Create a function that replaces the background color with an imnage
+***/
+
+function randomColor() {
+  let randomVal1 = Math.floor(Math.random() * 256);
+  let randomVal2 = Math.floor(Math.random() * 256);
+  let randomVal3 = Math.floor(Math.random() * 256);
+  let bgColor = `rgb(${randomVal1}, ${randomVal2},${randomVal3})`;
+  return(bgColor);
+
+  
+  };
+document.body.style.backgroundColor = randomColor();
+
+
+
+
 
 
 
@@ -58,4 +81,4 @@ function printQuote () {
  * DO NOT CHANGE THE CODE BELOW!!
 ***/
 
-document.getElementById('load-quote').addEventListener("click", printQuote, false);
+document.getElementById('load-quote').addEventListener("click", printQuote,   false);
