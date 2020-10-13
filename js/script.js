@@ -51,8 +51,7 @@ function printQuote () {
       htmlString = `${htmlString}   <span class="citation">${randomQuote.location}</span>`
     } else 
     htmlString = `${htmlString} </p>`
-   
-    return document.getElementById('quote-box').innerHTML = htmlString,
+    return document.getElementById('quote-box').innerHTML = htmlString, 
     document.body.style.backgroundColor = randomColor();
     
   };
@@ -65,11 +64,16 @@ function randomColor() {
   let randomVal1 = Math.floor(Math.random() * 256);
   let randomVal2 = Math.floor(Math.random() * 256);
   let randomVal3 = Math.floor(Math.random() * 256);
-  let bgColor = `rgb(${randomVal1}, ${randomVal2},${randomVal3})`;
+  let bgColor = `rgb(${randomVal1}, ${randomVal2},${randomVal3})`;  
   return(bgColor);
 
   
   };
+
+  /***
+   * create a timing interval function that auto refreshes the quote every 10 seconds
+   */
+setInterval(printQuote,10000);
 
 
 
